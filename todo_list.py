@@ -10,14 +10,16 @@ tasks = {}
 Y = True
 while Y == True:
     
-    choice = input("Would you like to 'add', 'view', 'delete', 'mark' a task as complete, or 'exit'? ")
+    choice = input("Would you like to 'add', 'view', 'delete', 'sort', 'mark' a task as complete, or 'exit'? ")
+
     
     if choice == 'add':
-        
-        t = input("What is the name of the task? ")
-        tasks = {t:'uncomplete'}
-        dict.update(tasks)
-        print("Task added.")
+        num = int(input("How many tasks would you like to add? "))
+        for i in range(num):
+            key = input("What is the name of the task? ")
+            newtask = {key:'uncomplete'}
+            tasks.update(newtask)
+            print('Task added')
         
     elif choice == 'view':
         print(tasks)
@@ -33,6 +35,13 @@ while Y == True:
         d = input('Which task would you like to mark as done? ')
         tasks[d] = 'complete'
         print("Marked as complete.")
+        
+    elif choice == 'sort':
+        sortlist = sorted(tasks.items())
+        sortdict = {}
+        for key, value in sortlist:
+            sortdict[key] = value   
+        print("The tasks in alpahetical order are", sortdict)
         
     elif choice == 'exit':
         Y = False
